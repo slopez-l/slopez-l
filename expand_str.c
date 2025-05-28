@@ -1,31 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   expand_str.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sergio <sergio@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/23 13:27:13 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/27 00:28:08 by sergio           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-// Verifica si un carácter es un espacio, tabulación o nueva línea
 int is_space(char c)
 {
     return (c == ' ' || (c >= 9 && c <= 13));
 }
 
-// Expande los espacios entre palabras a exactamente tres espacios
-// Esta función toma una cadena de caracteres y reemplaza cada secuencia de espacios
-// por exactamente tres espacios, asegurando que las palabras estén separadas adecuadamente.
 void    expand_str(char *str)
 {
     int i;
 
     i = 0;
-    while (str[i] && is_space(str[i])) // Ignora los espacios iniciales
+    while (str[i] && is_space(str[i]))
         i++;
     while (str[i])
     {
-        if (is_space(str[i]))           // Si encuentra espacios, los reemplaza por "   "
+        if (is_space(str[i]))
         {
-            while (str[i] && is_space(str[i])) // Salta todos los espacios consecutivos
+            while (str[i] && is_space(str[i]))
                 i++;
-            if (str[i])                  // Si aún hay texto, inserta los tres espacios
+            if (str[i])
                 write(1, "   ", 3);
         }
-        if (str[i])                      // Imprime cada carácter de la palabra
+        if (str[i])
         {
             write(1, &str[i], 1);
             i++;
@@ -33,15 +41,12 @@ void    expand_str(char *str)
     }
 }
 
-// Función principal que procesa los argumentos de la línea de comandos
-// Esta función verifica si se ha pasado un único argumento al programa y, si es así,
-// llama a la función `expand_str` para expandir los espacios en esa cadena.
 int main(int argc, char **argv)
 {
-    if (argc == 2)                     // Verifica que haya exactamente un argumento
-        expand_str(argv[1]);            // Llama a la función de expansión
-    write(1, "\n", 1);                  // Imprime un salto de línea al final
-    return (0);                         // Retorna 0 para indicar ejecución exitosa
+    if (argc == 2)
+        expand_str(argv[1]);
+    write(1, "\n", 1);
+    return (0);
 }
 
 /*

@@ -1,36 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   first_word.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slopez-l <slopez-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/23 13:36:15 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/23 13:42:39 by slopez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-// Función que encuentra y escribe la primera palabra de la cadena
-// Esta función toma una cadena de caracteres (str) y escribe la primera palabra
-// en la salida estándar. La primera palabra se define como la secuencia de caracteres
-// que aparece antes del primer espacio, tabulación o nueva línea. Si la cadena comienza
-// con espacios o tabulaciones, estos se ignoran al determinar el inicio de la primera palabra.
-void    first_word(char *str)
+void	first_word(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    // Salta los espacios en blanco, tabulaciones y nuevas líneas iniciales
-    while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
-        i++;
-    // Escribe la primera palabra hasta encontrar un espacio o fin de cadena
-    while (str[i] && !(str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
-    {
-        write(1, &str[i], 1);  // Escribe cada carácter de la palabra
-        i++;
-    }
+	i = 0;
+	while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
+		i++;
+	while (str[i] && !(str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
 }
 
-// Función principal que procesa los argumentos de la línea de comandos
-// Esta función verifica si se ha pasado un único argumento al programa y, si es así,
-// llama a la función `first_word` para imprimir la primera palabra de ese argumento.
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    // Verifica que se haya pasado un único argumento
-    if (argc == 2)
-        first_word(argv[1]);  // Llama a la función para procesar la cadena
-    write(1, "\n", 1);        // Imprime una nueva línea al final
-    return (0);               // Retorna 0 indicando ejecución exitosa
+	if (argc == 2)
+		first_word(argv[1]);
+	write(1, "\n", 1);
+	return (0);
 }
 
 /*

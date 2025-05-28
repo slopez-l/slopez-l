@@ -1,54 +1,62 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inter.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slopez-l <slopez-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/26 17:29:35 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/26 17:30:33 by slopez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-// Verifica si el carácter `c` ya apareció antes en `str` hasta la posición `i`
-int ft_single_in_param(char *str, char c, int i)
+int	ft_single_in_param(char *str, char c, int i)
 {
-    int j;
+	int	j;
 
-    j = 0;
-    while (str[j] != '\0' && j < i)    // Recorre `str` hasta la posición `i`
-    {
-        if (str[j] == c)              // Si el carácter ya apareció, retorna 1
-            return (1);
-        j++;
-    }
-    return (0);                        // Retorna 0 si el carácter es único
+	j = 0;
+	while (str[j] != '\0' && j < i)
+	{
+		if (str[j] == c)
+			return (1);
+		j++;
+	}
+	return (0);
 }
 
-// Verifica si el carácter `c` está presente en la cadena `str`
-int ft_in_other_param(char *str, char c)
+int	ft_in_other_param(char *str, char c)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i] != '\0')            // Recorre toda la cadena `str`
-    {
-        if (str[i] == c)              // Si el carácter está presente, retorna 1
-            return (1);
-        i++;
-    }
-    return (0);                        // Retorna 0 si el carácter no está en `str`
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-// Función principal que imprime los caracteres únicos de `argv[1]` que están en `arg	v[2]`
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (argc == 3)                    // Verifica que haya exactamente dos argumentos
-    {
-        while (argv[1][i] != '\0')    // Recorre la primera cadena `argv[1]`
-        {
-            // Si el carácter es único en `argv[1]` y está en `argv[2]`, lo imprime
-            if ((ft_single_in_param(argv[1], argv[1][i], i) == 0)
-                && (ft_in_other_param(argv[2], argv[1][i]) == 1))
-                write(1, &argv[1][i], 1);
-            i++;
-        }
-    }
-    write(1, "\n", 1);                 // Imprime un salto de línea al final
-    return (0);                        // Retorna 0 indicando ejecución exitosa
+	i = 0;
+	if (argc == 3)
+	{
+		while (argv[1][i] != '\0')
+		{
+			if ((ft_single_in_param(argv[1], argv[1][i], i) == 0)
+				&& (ft_in_other_param(argv[2], argv[1][i]) == 1))
+				write(1, &argv[1][i], 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
 }
 
 /*

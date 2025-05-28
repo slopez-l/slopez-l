@@ -1,38 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotone.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slopez-l <slopez-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/26 19:24:00 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/26 19:27:02 by slopez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-// Función que aplica una rotación de +1 a cada letra en la cadena
-// Esta función toma una cadena de caracteres (str) y modifica cada letra
-// avanzándola una posición en el alfabeto. Si la letra es 'Z' o 'z',
-// se convierte en 'A' o 'a' respectivamente. Los caracteres que no son letras
-// se dejan sin cambios. La función escribe el resultado directamente en la salida estándar.
-void    rotone(char *str)
+void	rotone(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i])                     // Recorre la cadena de entrada
-    {
-        if ((str[i] >= 'A' && str[i] < 'Z')
-            || (str[i] >= 'a' && str[i] < 'z'))
-            str[i] += 1;               // Avanza la letra en una posición
-        else if (str[i] == 'Z')
-            str[i] = 'A';              // Si es 'Z', vuelve a 'A'
-        else if (str[i] == 'z')
-            str[i] = 'a';              // Si es 'z', vuelve a 'a'
-        write(1, &str[i], 1);           // Escribe el carácter modificado en la salida estándar
-        i++;
-    }
+	i = 0;
+	while (str[i])
+	{
+		if ((str[i] >= 'A' && str[i] < 'Z')
+			|| (str[i] >= 'a' && str[i] < 'z'))
+			str[i] += 1;
+		else if (str[i] == 'Z')
+			str[i] = 'A';
+		else if (str[i] == 'z')
+			str[i] = 'a';
+		write(1, &str[i], 1);
+		i++;
+	}
 }
 
-// // Función principal que procesa los argumentos de la línea de comandos
-// // Esta función verifica si se ha pasado un único argumento al programa y, si es así,
-// // llama a la función `rotone` para aplicar la rotación a ese argumento.
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    if (argc == 2)                      // Verifica que haya exactamente un argumento
-        rotone(argv[1]);                 // Llama a la función para procesar la cadena
-    write(1, "\n", 1);                   // Imprime una nueva línea al final
-    return (0);                          // Retorna 0 indicando ejecución exitosa
+	if (argc == 2)
+		rotone(argv[1]);
+	write(1, "\n", 1);
+	return (0);
 }
 
 /*

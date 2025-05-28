@@ -1,37 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   aff_a.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slopez-l <slopez-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/23 11:15:12 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/23 11:32:36 by slopez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <unistd.h>
 
-// Función que busca la letra 'a' en la cadena de caracteres
-// Esta función toma un puntero a una cadena de caracteres (str) y busca la primera aparición
-// de la letra 'a'. Si encuentra 'a', la escribe en la salida estándar y termina la función.
-void    aff_a(char *str)
+void	aff_a(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i]) // Recorre la cadena hasta encontrar 'a'
-    {
-        if (str[i] == 'a')
-        {
-            write(1, "a", 1); // Escribe 'a' en la salida estándar
-            return ; // Termina la función cuando encuentra la primera 'a'
-        }
-        i++;
-    }
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == 'a')
+		{
+			write(1, "a", 1);
+			return ;
+		}
+		i++;
+	}
 }
 
-// Función principal que procesa los argumentos de la línea de comandos
-// Esta función verifica si se ha pasado un único argumento al programa. Si no se pasa ningún argumento,
-// imprime 'a' por defecto. Si se pasa un argumento, llama a la función `aff_a` para buscar 'a' en ese argumento.
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    if (argc != 2) // Si el número de argumentos no es 1, imprime 'a' por defecto
-        write(1, "a", 1);
-    else
-        aff_a(argv[1]); // Llama a la función para buscar 'a' en el argumento
-
-    write(1, "\n", 1); // Agrega una nueva línea al final de la salida
-    return (0);
+	if (argc != 2)
+		write(1, "a", 1);
+	else
+		aff_a(argv[1]);
+	write(1, "\n", 1);
+	return (0);
 }
 
 /*

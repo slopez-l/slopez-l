@@ -1,27 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   aff_first_param.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slopez-l <slopez-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/23 11:41:11 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/26 20:19:01 by slopez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-// Programa que imprime el primer argumento de la línea de comandos
-// seguido de un salto de línea. Si no se proporciona ningún argumento,
-// simplemente imprime un salto de línea.
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    // Verifica que haya al menos un argumento proporcionado
-    if (argc > 1)
-    {
-        // Recorre la cadena del primer argumento (argv[1])
-        while (argv[1][i])
-        {
-            // Escribe cada carácter en la salida estándar
-            write(1, &argv[1][i], 1);
-            i++;
-        }
-    }
-    // Escribe un salto de línea al final, independientemente de los argumentos
-    write(1, "\n", 1);
-    return (0);
+	i = 0;
+	if (argc > 1)
+	{
+		while (argv[1][i])
+		{
+			write(1, &argv[1][i], 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
 }
 
 /*

@@ -1,52 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   union.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slopez-l <slopez-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/26 19:35:45 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/26 19:48:40 by slopez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-// Verifica si el carácter `c` ya apareció en `str` hasta la posición `limit`
-// Esta función recorre la cadena `str` hasta el índice `limit` (o toda la cadena si `limit == -1`)
-int ft_was_printed(char *str, char c, int limit)
+int	ft_was_printed(char *str, char c, int limit)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i] && (i < limit || limit == -1))  // Recorre `str` hasta `limit` o toda la cadena si `limit == -1`
-    {
-        if (str[i] == c)  // Si el carácter ya apareció, retorna 1
-            return (1);
-        i++;
-    }
-    return (0);  // Retorna 0 si el carácter no ha sido impreso antes
+	i = 0;
+	while (str[i] && (i < limit || limit == -1))
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
-// Escribe la unión de dos cadenas sin repetir caracteres
-void    ft_union(char *str1, char *str2)
+void	ft_union(char *str1, char *str2)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str1[i])  // Recorre la primera cadena `str1`
-    {
-        if (!ft_was_printed(str1, str1[i], i))  // Si el carácter no ha sido impreso antes, lo escribe
-            write(1, &str1[i], 1);
-        i++;
-    }
-    i = 0;
-    while (str2[i])  // Recorre la segunda cadena `str2`
-    {
-        if (!ft_was_printed(str1, str2[i], -1)  // Verifica que no esté en `str1`
-            && !ft_was_printed(str2, str2[i], i))  // Verifica que no se haya repetido en `str2`
-            write(1, &str2[i], 1);
-        i++;
-    }
+	i = 0;
+	while (str1[i])
+	{
+		if (!ft_was_printed(str1, str1[i], i))
+			write(1, &str1[i], 1);
+		i++;
+	}
+	i = 0;
+	while (str2[i])
+	{
+		if (!ft_was_printed(str1, str2[i], -1)
+			&& !ft_was_printed(str2, str2[i], i))
+			write(1, &str2[i], 1);
+		i++;
+	}
 }
 
-// Función principal que procesa los argumentos de la línea de comandos
-// Esta función verifica si se han pasado exactamente dos argumentos al programa y, si es así,
-// llama a la función `ft_union` para imprimir la unión de los caracteres de ambos argumentos.
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    if (argc == 3)  // Verifica que haya exactamente dos argumentos
-        ft_union(argv[1], argv[2]);  // Llama a la función para unir las cadenas
-    write(1, "\n", 1);  // Imprime un salto de línea al final
-    return (0);  // Retorna 0 indicando ejecución exitosa
+	if (argc == 3)
+		ft_union(argv[1], argv[2]);
+	write(1, "\n", 1);
+	return (0);
 }
 
 /*

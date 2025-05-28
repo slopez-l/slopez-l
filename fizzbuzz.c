@@ -1,52 +1,62 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fizzbuzz.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sergio <sergio@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/23 13:49:07 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/27 00:02:59 by sergio           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-// Función para imprimir un número entero mediante recursión
-// Esta función toma un entero y lo imprime en la salida estándar
-// utilizando la función write de Unix, sin usar printf ni sprintf.
-// La función maneja números mayores a 9 dividiendo el número
-// recursivamente para extraer cada dígito y luego imprimirlos en orden.
-void    ft_print_nbr(int i)
+void	ft_print_nbr(int i)
 {
-    char    *digits;
+	char	*digits;
 
-    digits = "0123456789";           // Array con los dígitos del 0 al 9
-    if (i > 9)                       // Si el número es mayor que 9, llamamos recursivamente
-        ft_print_nbr(i / 10);        // Dividimos para extraer los dígitos anteriores
-    write(1, &digits[i % 10], 1);    // Imprimimos el último dígito
+	digits = "0123456789";
+	if (i > 9)
+		ft_print_nbr(i / 10);
+	write(1, &digits[i % 10], 1);
 }
 
-// Función principal que imprime números del 1 al 100
-// Esta función itera desde 1 hasta 100 e imprime "fizz" si el número es múltiplo de 3,
-// "buzz" si es múltiplo de 5, "fizzbuzz" si es múltiplo de ambos, o el número mismo
-// si no es múltiplo de ninguno. Utiliza la función ft_print_nbr para imprimir los números.
-int main(void)
+int	main(void)
 {
-    int i;
+	int	i;
 
-    i = 1;                           // Inicializamos la variable en 1
-    while (i <= 100)                 // Iteramos desde 1 hasta 100
-    {
-        if ((i % 3 == 0) && (i % 5 == 0)) // Si es múltiplo de 3 y 5, imprimimos "fizzbuzz"
-            write(1, "fizzbuzz\n", 9);
-        else if ((i % 3) == 0)        // Si es múltiplo de 3, imprimimos "fizz"
-            write(1, "fizz\n", 5);
-        else if ((i % 5) == 0)        // Si es múltiplo de 5, imprimimos "buzz"
-            write(1, "buzz\n", 5);
-        else                          // Si no es múltiplo de ninguno, imprimimos el número
-        {
-            ft_print_nbr(i);          // Llamamos a la función para imprimir el número
-            write(1, "\n", 1);        // Nueva línea después del número
-        }
-        i++;                          // Incrementamos el contador
-    }
-    return (0);                       // Retorno exitoso del programa
+	i = 1;
+	while (i <= 100)
+	{
+		if ((i % 3 == 0) && (i % 5 == 0))
+			write(1, "fizzbuzz\n", 9);
+		else if ((i % 3) == 0)
+			write(1, "fizz\n", 5);
+		else if ((i % 5) == 0)
+			write(1, "buzz\n", 5);
+		else
+		{
+			ft_print_nbr(i);
+			write(1, "\n", 1);
+		}
+		i++;
+	}
+	return (0);
 }
 
 /*
 Assignment name  : fizzbuzz
 Expected files   : fizzbuzz.c
 Allowed functions: write
-
+--------------------------------------------------------------------------------
+Write a program that prints the numbers from 1 to 100, each separated by a
+newline.
+If the number is a multiple of 3, it prints 'fizz' instead.
+If the number is a multiple of 5, it prints 'buzz' instead.
+If the number is both a multiple of 3 and a multiple of 5,
+ it prints 'fizzbuzz' instead.
+--------------------------------------------------------------------------------
 Escribe un programa que imprima los números del 1 al 100,
  cada uno separado por un
 nueva línea.
@@ -94,4 +104,5 @@ La función regresa a la llamada anterior
 resto de la división es "2".
 
 La función regresa a la llamada anterior (
-con i = 123) --> write(1, &digit
+con i = 123) --> write(1, &digits[123 % 10], 1) el
+resto de la división es "3".*/

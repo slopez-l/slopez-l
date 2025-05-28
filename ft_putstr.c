@@ -1,15 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slopez-l <slopez-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/26 16:34:23 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/26 16:39:55 by slopez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-// Función que imprime una cadena de caracteres en la salida estándar
-// Esta función toma un puntero a una cadena de caracteres (str) y escribe
-// cada carácter de la cadena en la salida estándar (normalmente la consola).
-void    ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i] != '\0')    // Recorre la cadena hasta encontrar el carácter nulo '\0'
-        write(1, &str[i++], 1); // Escribe cada carácter en la salida estándar
+	i = 0;
+	while (str[i] != '\0')
+		write(1, &str[i++], 1);
 }
 
 /*int main(void)

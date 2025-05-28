@@ -1,15 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   aff_z.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slopez-l <slopez-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/23 12:54:39 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/26 19:53:46 by slopez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-// Programa que imprime el primer argumento de la línea de comandos
-// seguido de un salto de línea. Si no se proporciona ningún argumento,
-// simplemente imprime un salto de línea.
-int main(void)
+int	main(void)
 {
-    // Escribe la letra 'z' seguida de una nueva línea en la salida estándar
-    write(1, "z\n", 2);
-
-    // Retorna 0 para indicar que el programa se ejecutó correctamente
-    return (0);
+	write(1, "z\n", 2);
+	return (0);
 }
 
 // NO TE OLVIDES EN ESTE CASO DE PONER "2" O PONERLO ASI

@@ -1,62 +1,70 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slopez-l <slopez-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/26 15:05:29 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/26 20:02:18 by slopez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-// Función que calcula la longitud de un número en base 10
-// Esta función toma un número entero y devuelve la cantidad de dígitos que tiene.
-int ft_nbrlen(int nbr)
+int	ft_nbrlen(int nbr)
 {
-    int len;
+	int	len;
 
-    if (nbr <= 0)                   // Si el número es negativo o 0, cuenta al menos 1 dígito
-        len = 1;
-    else
-        len = 0;
-    while (nbr)                      // Divide el número por 10 hasta que sea 0
-    {
-        len++;                        // Incrementa la longitud por cada división
-        nbr /= 10;
-    }
-    return (len);                     // Retorna la cantidad de dígitos
+	if (nbr <= 0)
+		len = 1;
+	else
+		len = 0;
+	while (nbr)
+	{
+		len++;
+		nbr /= 10;
+	}
+	return (len);
 }
 
-// Copia hasta `n` caracteres de `src` en `dest` y añade terminación `\0`
-char    *ft_strncpy(char *dest, const char *src, size_t n)
+char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-    size_t  i;
+	size_t	i;
 
-    i = 0;
-    while (i < n && src[i] != '\0')   // Copia los caracteres de `src` a `dest`
-    {
-        dest[i] = src[i];
-        i++;
-    }
-    dest[i] = '\0';                   // Asegura que la cadena termine en `\0`
-    return (dest);                     // Retorna el puntero a `dest`
+	i = 0;
+	while (i < n && src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
 
-// Convierte un número entero en una cadena de caracteres (`itoa` - integer to ASCII)
-char    *ft_itoa(int nbr)
+char	*ft_itoa(int nbr)
 {
-    int     len;
-    char    *str;
+	int		len;
+	char	*str;
 
-    len = ft_nbrlen(nbr);              // Calcula la cantidad de dígitos del número
-    str = (char *)malloc(sizeof(char) * (len + 1));  // Reserva memoria para la cadena
-    if (!str)                          // Verifica si `malloc` ha fallado
-        return (NULL);
-    str[len] = '\0';                   // Asegura que la cadena termine en `\0`
-    if (nbr == -2147483648)            // Caso especial para el valor mínimo de `int`
-        return (ft_strncpy(str, "-2147483648", 11));
-    if (nbr < 0)                       // Si el número es negativo, lo convierte a positivo
-    {
-        str[0] = '-';                   // Añade el signo negativo
-        nbr = -nbr;
-    }
-    while (len-- && nbr)               // Llena la cadena con los dígitos del número
-    {
-        str[len] = (nbr % 10) + '0';    // Convierte el dígito numérico a carácter
-        nbr /= 10;
-    }
-    return (str);                       // Retorna la cadena resultante
+	len = ft_nbrlen(nbr);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	str[len] = '\0';
+	if (nbr == -2147483648)
+		return (ft_strncpy(str, "-2147483648", 11));
+	if (nbr < 0)
+	{
+		str[0] = '-';
+		nbr = -nbr;
+	}
+	while (len-- && nbr)
+	{
+		str[len] = (nbr % 10) + '0';
+		nbr /= 10;
+	}
+	return (str);
 }
 
 /*#include <stdio.h>

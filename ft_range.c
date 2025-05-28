@@ -1,53 +1,58 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slopez-l <slopez-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/26 16:47:18 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/26 20:05:07 by slopez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-// Función que genera un array de números desde `start` hasta `end`
-// Esta función toma dos enteros, `start` y `end`, y devuelve un puntero a un array
-// de enteros que contiene todos los números en el rango [start, end].
-int *ft_range(int start, int end)
+int	*ft_range(int start, int end)
 {
-    int *range;
-    int len;
-    int i;
+	int	*range;
+	int	len;
+	int	i;
 
-    i = 0;
-    if (start > end)                 // Calcula el tamaño del array basado en el rango
-        len = start - end + 1;
-    else
-        len = end - start + 1;
-
-    range = (int *)malloc(sizeof(int) * len); // Reserva memoria para el array
-    if (!range)                               // Verifica si la asignación de memoria falló
-        return (NULL);                         // Retorna NULL en caso de error
-
-    while (i < len)
-    {
-        range[i++] = start;       // Asigna el valor de `start` en el array
-        if (start > end)          // Si `start` es mayor que `end`, decrementa
-            start--;
-        else                      // Si `start` es menor que `end`, incrementa
-            start++;
-    }
-    return (range);               // Retorna el array generado
+	i = 0;
+	if (start > end)
+		len = start - end + 1;
+	else
+		len = end - start + 1;
+	range = (int *)malloc(sizeof(int) * len);
+	if (!range)
+		return (NULL);
+	while (i < len)
+	{
+		range[i++] = start;
+		if (start > end)
+			start--;
+		else
+			start++;
+	}
+	return (range);
 }
 
 /*#include <stdio.h>
 
-// Función principal para probar `ft_range`
-int main(void)
+int	main(void)
 {
     int *numbers;
     int i = 0;
     int start = 0, end = -3;
     int len = (start > end) ? (start - end + 1) : (end - start + 1);
 
-    numbers = ft_range(start, end);  // Llamada a la función `ft_range`
+    numbers = ft_range(start, end);
     while (i < len)
-        printf("%d, ", numbers[i++]);  // Imprime cada número del array
+        printf("%d, ", numbers[i++]);
 
-    free(numbers);  // Libera la memoria asignada
+    free(numbers);
     return (0);
 }
-*/
 
 /*
 Assignment name  : ft_range

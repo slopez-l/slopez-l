@@ -1,27 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   aff_last_param.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slopez-l <slopez-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/23 11:43:40 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/23 11:44:03 by slopez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-// Programa que imprime el primer argumento de la línea de comandos
-// seguido de un salto de línea. Si no se proporciona ningún argumento,
-// simplemente imprime un salto de línea.
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    // Verifica que haya al menos un argumento en la línea de comandos
-    if (argc > 1)
-    {
-        // Recorre cada carácter del último argumento pasado al programa
-        while (argv[argc - 1][i])
-        {
-            // Escribe cada carácter en la salida estándar
-            write(1, &argv[argc - 1][i], 1);
-            i++;
-        }
-    }
-    // Escribe un salto de línea al final, independientemente de los argumentos
-    write(1, "\n", 1);
-    return (0);
+	i = 0;
+	if (argc > 1)
+	{
+		while (argv[argc - 1][i])
+		{
+			write(1, &argv[argc - 1][i], 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
 }
 
 /*

@@ -1,40 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   buzzfizz.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slopez-l <slopez-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/23 12:56:01 by slopez-l          #+#    #+#             */
+/*   Updated: 2025/05/23 13:20:35 by slopez-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-// Función que imprime un número entero utilizando recursión
-void    ft_print_nbr(int i)
+void	ft_print_nbr(int i)
 {
-    char    *digits;
+	char	*digits;
 
-    digits = "0123456789"; // Definimos los caracteres numéricos
-    if (i > 9) // Si el número tiene más de un dígito, llamamos recursivamente
-        ft_print_nbr(i / 10);
-    write(1, &digits[i % 10], 1); // Escribimos el último dígito
+	digits = "0123456789";
+	if (i > 9)
+		ft_print_nbr(i / 10);
+	write(1, &digits[i % 10], 1);
 }
 
-// Función principal que imprime números del 1 al 100
-int main(void)
+int	main(void)
 {
-    int i;
+	int	i;
 
-    i = 1;
-    while (i < 101) // Iteramos de 1 a 100
-    {
-        // Si el número es múltiplo de 28, imprimimos "fizzbuzz"
-        if ((i % 28) == 0)
-            write(1, "fizzbuzz", 8);
-        // Si es múltiplo de 7, imprimimos "buzz"
-        else if ((i % 7) == 0)
-            write(1, "buzz", 4);
-        // Si es múltiplo de 4, imprimimos "fizz"
-        else if ((i % 4) == 0)
-            write(1, "fizz", 4);
-        // Si no es múltiplo de ninguno, imprimimos el número
-        else
-            ft_print_nbr(i);
-        write(1, "\n", 1); // Nueva línea tras cada salida
-        i++;
-    }
-    return (0);
+	i = 1;
+	while (i < 101)
+	{
+		if ((i % 28) == 0)
+			write(1, "fizzbuzz", 8);
+		else if ((i % 7) == 0)
+			write(1, "buzz", 4);
+		else if ((i % 4) == 0)
+			write(1, "fizz", 4);
+		else
+			ft_print_nbr(i);
+		write(1, "\n", 1);
+		i++;
+	}
+	return (0);
 }
 
 /*

@@ -1,0 +1,29 @@
+ExamZIP
+Instrucciones:
+Copia todo en la carpeta que quieras.
+
+Ejecuta make
+
+Para preparar una simulación ejecuta ./grademe reset
+
+OJO ESTO BORRA LA CARPETA "rendu", si quieres conservar tus ficheros de dicha carpeta, muevelos antes
+
+Para comenzar una simulación ejecuta ./grademe start P, ./grademe start T o ./grademe start R
+
+./grademe start P Modo PRACTICE aleatoriamente te asigna las preguntas de los 8 niveles, te penaliza con menos tiempo de espera y ves el motivo del fallo:
+
+El resultado que se esperaba recibir y lo que devuelve tu cógigo
+
+./grademe start T Modo PRACTICE ALL QUESTIONS te asigna todas las preguntas (20) de los 8 niveles, te penaliza con menos tiempo de espera y ves el motivo del fallo:
+
+El resultado que se esperaba recibir y lo que devuelve tu cógigo
+
+./grademe start R Modo REAL te penaliza con más tiempo de espera y no ves el motivo del fallo
+
+Para evaluar cada ejercicio ejecuta ./grademe
+
+Si el ejercicio es una función "ft_xxx.c" ejecuta make
+
+Si sospechas que falla la compilación o quieres comprobar ejecuta make grademe
+
+Para ver la ayuda ejecuta ./grademe help
